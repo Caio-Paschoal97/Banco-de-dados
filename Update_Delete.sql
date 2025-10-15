@@ -1,0 +1,70 @@
+-- Scripts DELETE OU UPDATE
+
+SET SQL_SAFE_UPDATES = 0;
+
+-- UPDATE \/
+
+-- 1. Atualiza o nome do cliente com ID 1
+UPDATE Cliente SET nome = 'Lucas Ferreira Jr.' WHERE id_Cliente = 1;
+
+-- 2. Atualiza o status do pedido para 'Cancelado'
+UPDATE Pedidos SET status_pedido = 'Cancelado' WHERE id_Pedido = 2;
+
+-- 3. Atualiza o título do livro com ISBN específico
+UPDATE Livros SET titulo = 'O Segredo das Estrelas - Edição Especial' WHERE ISBN = '9780000000001';
+
+-- 4. Atualiza a quantidade do exemplar com ID 2
+UPDATE Exemplares SET quantidade = 10 WHERE id_Exemplar = 2;
+
+-- 5. Atualiza o email do funcionário com CPF específico
+UPDATE Funcionario SET email = 'novo.email@email.com' WHERE CPF = '22222222222';
+
+-- 6. Atualiza o número do telefone do funcionário
+UPDATE Telefone_funcionario SET numero_telefone = '11912345678' WHERE id_telefone = 1;
+
+-- 7. Atualiza o bairro do endereço do cliente com ID 4
+UPDATE Endereco_cliente SET bairro = 'Nova Esperança' WHERE id_Endereco_cliente = 4;
+
+-- 8. Atualiza a descrição do cargo com ID 2
+UPDATE Cargo SET descricao_cargo = 'Responsável por análises de processos' WHERE id_Cargo = 2;
+
+-- 9. Atualiza a nacionalidade do autor com ID 5
+UPDATE Autores SET nacionalidade = 'Canadense' WHERE id_Autor = 5;
+
+-- 10. Atualiza a descrição da palavra-chave com ID 
+UPDATE Palavra_Chave SET descricao = 'Drama psicológico' WHERE id_Palavra_Chave = 8;
+
+-- Delete \/
+
+-- 11. Remove o cliente com ID 3 (Pedro Gomes)
+DELETE FROM Cliente WHERE id_Cliente = 3;
+
+-- 12. Remove o pedido com ID 5
+DELETE FROM Pedidos WHERE id_Pedido = 5;
+
+-- 13. Remove o livro com ISBN específico
+DELETE FROM Livros WHERE ISBN = '9780000000005';
+
+-- 14. Remove o exemplar com ID 8
+DELETE FROM Exemplares WHERE id_Exemplar = 8;
+
+-- 15. Remove o funcionário com CPF específico
+DELETE FROM telefone_funcionario WHERE Funcionario_CPF = '55555555555';
+DELETE FROM Funcionario WHERE CPF = '55555555555';
+
+-- 16. Remove o telefone do cliente com ID 6
+DELETE FROM Telefone_Cliente WHERE id_Telefone_Cliente = 6;
+
+-- 17. Remove o endereço do funcionário com ID 7
+DELETE FROM Endereco_Funcionario WHERE id_Endereco = 7;
+
+-- 18. Remove o cargo com ID 10
+DELETE FROM Cargo WHERE id_Cargo = 10;
+
+-- 19. Remove o autor com ID 12
+DELETE FROM Autores WHERE id_Autor = 12;
+
+-- 20. Remove a palavra-chave com ID 4
+DELETE FROM Palavra_Chave WHERE id_Palavra_Chave = 4;
+
+
