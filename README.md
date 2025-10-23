@@ -1,4 +1,8 @@
 # Editora_Gorette - Banco de Dados
+
+👥 Equipe de Desenvolvimento
+Caio Victor • Luciana Borges • Priscila Barbosa
+
 📚 Descrição
 
 O projeto Editora_Gorette consiste em um banco de dados relacional desenvolvido em MySQL, projetado para gerenciar todas as informações de uma editora de livros, incluindo:
