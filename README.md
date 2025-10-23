@@ -1,10 +1,10 @@
-📚 Banco de Dados — Editora Gorette
+#📚 Banco de Dados — Editora Gorette
 Este projeto apresenta o desenvolvimento completo de um banco de dados relacional para uma Editora Literária, implementado em MySQL Workbench. O sistema foi modelado para gerenciar todo o ecossistema editorial, desde o cadastro de autores e livros até vendas, estoque e recursos humanos, garantindo integridade, consistência e normalização dos dados.
 
-📘 Etapas do Projeto
+#📘 Etapas do Projeto
 O sistema foi desenvolvido em três camadas de modelagem:
 
-🧩 Modelo Conceitual
+#🧩 Modelo Conceitual
 Define as entidades principais (Livros, Autores, Clientes, Funcionários, Pedidos) e seus relacionamentos, com cardinalidades bem estabelecidas (1:1, 1:N, N:N). Essa etapa garantiu o entendimento claro do domínio editorial antes da implementação técnica.
 
 💾 Modelo Lógico
