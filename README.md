@@ -1,78 +1,101 @@
-# Editora_Gorette - Banco de Dados
+📚 Banco de Dados — Editora Gorette
+Este projeto apresenta o desenvolvimento completo de um banco de dados relacional para uma Editora Literária, implementado em MySQL Workbench. O sistema foi modelado para gerenciar todo o ecossistema editorial, desde o cadastro de autores e livros até vendas, estoque e recursos humanos, garantindo integridade, consistência e normalização dos dados.
 
-👥 Equipe de Desenvolvimento
+📘 Etapas do Projeto
+O sistema foi desenvolvido em três camadas de modelagem:
 
-Caio Victor
+🧩 Modelo Conceitual
+Define as entidades principais (Livros, Autores, Clientes, Funcionários, Pedidos) e seus relacionamentos, com cardinalidades bem estabelecidas (1:1, 1:N, N:N). Essa etapa garantiu o entendimento claro do domínio editorial antes da implementação técnica.
 
-Luciana Borges
+💾 Modelo Lógico
+Traduziu o modelo conceitual para estrutura relacional, especificando:
 
-Priscila Barbosa
+Chaves primárias e estrangeiras
 
-📚 Descrição
+Tipos de dados apropriados
 
-O projeto Editora_Gorette consiste em um banco de dados relacional desenvolvido em MySQL, projetado para gerenciar todas as informações de uma editora de livros, incluindo:
+Regras de integridade referencial
 
-Livros, autores e suas relações
+Cardinalidades aplicadas
 
-Exemplares físicos
+⚙️ Modelo Físico
+Implementado via scripts SQL, com criação de tabelas, relacionamentos, índices e regras de exclusão em cascata para manter a consistência do banco.
 
-Áreas de conhecimento e palavras-chave
+🧰 Stacks Utilizadas
+Camada	Ferramenta	Finalidade
+Modelo Conceitual	brModelo	Criação do diagrama Entidade-Relacionamento (DER)
+Modelo Lógico	MySQL Workbench	Conversão do modelo conceitual em estrutura relacional
+Modelo Físico	MySQL Server / Workbench	Implementação real do banco via scripts SQL
+🧠 Normalização
+O projeto segue as três primeiras formas normais para garantir integridade e eliminar redundâncias:
 
-Pedidos e itens de pedidos
+Forma Normal	Aplicação no Projeto
+1FN	Todos os atributos possuem valores atômicos (ex: ISBN, título único)
+2FN	Atributos dependem totalmente das chaves primárias (ex: dados do livro dependem do ISBN)
+3FN	Sem dependências transitivas (ex: departamentos separados de cargos)
+🏗️ Estrutura das Tabelas
+📚 Tabelas Principais do Negócio
+Tabela	Descrição
+Livros	Cadastro completo das obras publicadas (ISBN, título, gênero, páginas)
+Autores	Dados biográficos dos escritores e colaboradores
+Exemplares	Controle físico de estoque e localização
+Pedidos	Registro de vendas e encomendas
+Clientes	Cadastro de compradores e leitores
+👥 Tabelas de Recursos Humanos
+Tabela	Descrição
+Funcionario	Dados completos dos colaboradores da editora
+Cargo	Definição de funções e responsabilidades
+Departamento	Estrutura organizacional da editora
+🏷️ Tabelas de Classificação
+Tabela	Descrição
+Area_Conhecimento	Categorização temática das obras
+Palavra_Chave	Sistema de tags para indexação e busca
+🔗 Tabelas de Relacionamento
+Tabela	Tipo	Descrição
+Autores_has_Livros	N:N	Relacionamento entre autores e suas obras
+Livros_has_Palavra_Chave	N:N	Associação de tags aos livros
+Pedidos_has_Cliente	N:N	Vínculo entre pedidos e clientes
+Pedidos_has_Funcionario	N:N	Funcionários responsáveis pelos pedidos
+🔗 Tipos de Relacionamento e CASCADE
+O banco utiliza regras de integridade referencial para manter coerência entre as tabelas:
 
-Clientes e funcionários, com contatos e endereços
+Regra	Aplicação no Sistema
+ON DELETE CASCADE	Remove automaticamente registros dependentes (ex: exemplares ao excluir livro)
+Chaves Estrangeiras	Garantem integridade nos relacionamentos entre entidades
+Constraints UNIQUE	Evitam duplicidades em campos críticos (título, número de série)
+💡 Destaques do Sistema
+🔄 Fluxos Integrados
+Publicação: Autor → Livro → Classificação → Exemplares
 
-Departamentos e cargos
+Vendas: Cliente → Pedido → Itens → Estoque
 
-O modelo foi desenvolvido respeitando a 1ª, 2ª e 3ª formas normais, garantindo integridade e consistência dos dados.
+RH: Funcionário → Cargo → Departamento
 
-# 🗂 Estrutura do Banco de Dados
-Tabelas Principais
+🎯 Funcionalidades Chave
+Controle completo do catálogo bibliográfico
 
-Livros – Armazena informações detalhadas sobre livros, como ISBN, título, gênero e número de páginas.
+Gestão de autores e direitos autorais
 
-Autores – Cadastro de autores, com nome, nacionalidade, biografia e data de nascimento.
+Sistema de classificação por área e tags
 
-Pedidos – Registra os pedidos realizados, detalhando data, status e valor total.
+Controle de estoque e exemplares
 
-Cliente – Cadastro de clientes.
+Processamento de vendas e pedidos
 
-Funcionario – Cadastro de funcionários, incluindo dados de contato.
+Administração de recursos humanos
 
-# Tabelas de Relacionamento
+🧮 Consultas Relacionais
+Os JOINS são essenciais para relacionar informações entre as tabelas do sistema:
 
-Autores_has_Livros – Relacionamento muitos-para-muitos entre autores e livros.
+📊 Exemplos de Consultas:
+Listar livros e seus autores:
 
-Livros_has_Palavra_Chave – Relacionamento muitos-para-muitos entre livros e palavras-chave.
+sql
+SELECT l.titulo, a.nome as autor
+FROM Livros l
+INNER JOIN Autores_has_Livros al ON l.ISBN = al.Livros_ISBN
+INNER JOIN Autores a ON al.Autores_id_Autor = a.id_Autor;
+Consultar pedidos com clientes:
 
-Pedidos_has_Cliente – Relacionamento muitos-para-muitos entre pedidos e clientes.
-
-Pedidos_has_Funcionario – Relacionamento muitos-para-muitos entre pedidos e funcionários.
-
-# Outras Tabelas
-
-Exemplares – Controle de exemplares físicos de livros.
-
-Area_Conhecimento – Áreas de conhecimento associadas a cada livro.
-
-Palavra_Chave – Palavras-chave para categorização de livros.
-
-Telefone_funcionario e Endereco_Funcionario – Contatos de funcionários.
-
-Telefone_Cliente e Endereco_cliente – Contatos de clientes.
-
-Cargo – Cargos de funcionários.
-
-Departamento – Departamentos da editora vinculados a cargos e livros.
-
-Itens_pedido – Itens de cada pedido, vinculando livros a pedidos.
-
-# 🔗 Relacionamentos
-
-O banco de dados implementa:
-
-Relacionamentos muitos-para-muitos: livros ↔ autores, livros ↔ palavras-chave, pedidos ↔ clientes, pedidos ↔ funcionários.
-
-Relacionamentos um-para-muitos: livros ↔ exemplares, livros ↔ áreas de conhecimento, clientes ↔ endereços/telefones, funcionários ↔ cargos/departamentos.
-
-Integridade referencial com FOREIGN KEY e ON DELETE CASCADE.
+✨ Autoria
+Caio Victor, Luciana Borges, Priscila Barbosa
