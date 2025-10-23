@@ -1,7 +1,12 @@
 # Editora_Gorette - Banco de Dados
 
 👥 Equipe de Desenvolvimento
-Caio Victor • Luciana Borges • Priscila Barbosa
+
+Caio Victor
+
+Luciana Borges
+
+Priscila Barbosa
 
 📚 Descrição
 
